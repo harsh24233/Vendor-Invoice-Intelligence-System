@@ -1,29 +1,29 @@
 # Vendor Invoice Intelligence System
 
-Machine Learning based system for **freight cost prediction** and **invoice risk detection** using vendor invoice and purchase-order data.
+A machine learning-based invoice intelligence system for **freight cost prediction** and **invoice risk detection** using vendor invoice and purchase-order data.
 
 ---
 
 ## Overview
 
-The Vendor Invoice Intelligence System analyzes vendor invoice and purchase-order records to predict freight costs and identify suspicious invoices using machine learning.
+The Vendor Invoice Intelligence System is designed to analyze vendor invoice and purchase-order records to improve operational efficiency through predictive analytics and anomaly detection.
 
-This project includes:
+The system consists of two major modules:
 
-* Data preprocessing and feature engineering
-* Exploratory Data Analysis (EDA)
-* Freight cost prediction using regression models
-* Invoice anomaly detection using classification models
+* **Freight Cost Prediction**
+* **Invoice Risk Detection**
+
+It uses machine learning models to estimate freight costs and identify suspicious invoices based on engineered business and statistical features.
 
 ---
 
 ## Features
 
-* Freight cost prediction
-* Invoice risk detection
-* SQL-based feature engineering
-* Automated risk labeling
-* Model training and evaluation
+* Freight cost prediction using regression models
+* Invoice anomaly detection using classification models
+* SQL-based data extraction and feature engineering
+* Automated risk labeling using business rules
+* Model persistence for inference and deployment
 
 ---
 
@@ -40,26 +40,48 @@ This project includes:
 
 ---
 
-## Machine Learning Models
+## Modules
 
 ### Freight Cost Prediction
+
+Predicts freight cost using invoice-related features.
+
+Models Used:
 
 * Linear Regression
 * Decision Tree Regressor
 * Random Forest Regressor
 
+---
+
 ### Invoice Risk Detection
 
+Detects suspicious invoices using classification models.
+
+Features Used:
+
+* Invoice Quantity
+* Invoice Dollars
+* Freight
+* Total Item Quantity
+* Total Item Dollars
+
+Model Used:
+
 * Random Forest Classifier
-* GridSearchCV for hyperparameter tuning
+* Hyperparameter tuning using GridSearchCV
 
 ---
 
 ## Dataset
 
-The dataset consists of vendor invoice and purchase-order records stored in SQLite.
+The project uses vendor invoice and purchase-order records stored in SQLite.
 
-Features used:
+Dataset Size:
+
+* 5500+ invoice records
+
+Key attributes include:
 
 * Invoice Quantity
 * Invoice Dollars
@@ -69,37 +91,36 @@ Features used:
 * Total Item Quantity
 * Total Item Dollars
 
-Dataset Size:
-
-* 5500+ invoice records
-
 ---
 
 ## Project Structure
 
-```bash
+```text id="u42q9v"
 Vendor-Invoice-Intelligence-System/
 │
 ├── data/
 │   └── inventory.db
 │
-├── notebooks/
-│   ├── Predicting Freight Cost.ipynb
-│   └── Predicting Flag Invoice.ipynb
-│
 ├── freight_cost_prediction/
 │   ├── data_preprocessing.py
 │   ├── modeling_evaluation.py
-│   └── main.py
+│   └── train.py
 │
 ├── invoice_flagging/
 │   ├── data_preprocessing.py
 │   ├── modeling_evaluation.py
-│   └── main.py
+│   └── train.py
 │
 ├── models/
+│   ├── predict_freight_model.pkl
+│   ├── predict_flag_invoice.pkl
+│   └── scaler.pkl
 │
-└── README.md
+├── notebooks/
+│   ├── Predicting Freight Cost.ipynb
+│   └── Invoice Flagging.ipynb
+│
+└── inference/
 ```
 
 ---
@@ -115,6 +136,8 @@ Trained multiple regression models:
 * Random Forest Regression
 
 Random Forest achieved the best performance.
+
+---
 
 ### Invoice Risk Detection
 
@@ -134,14 +157,8 @@ Performance:
 ## Future Improvements
 
 * Deploy as a web application
+* Real-time anomaly detection
+* Interactive analytics dashboard
 * Improve recall using advanced ML models
-* Add dashboard for analytics
-* Enable real-time anomaly detection
 
 ---
-
-## Author
-
-Harsh
-B.Tech Computer Science with Applied Mathematics
-IIIT Delhi
